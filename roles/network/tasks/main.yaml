@@ -1,0 +1,11 @@
+- name: Install Packages
+  ansible.builtin.apt:
+    name:
+      - net-tools
+      - nmap
+      - iftop
+      - tcpdump
+      - openssh-server
+      - network-manager
+      - nload
+      - ntp

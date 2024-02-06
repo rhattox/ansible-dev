@@ -1,0 +1,33 @@
+- name: Install Packages
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - lsb-release
+      - gnupg
+      - software-properties-common
+      - wget
+      - curl
+      - ca-certificates-java
+      - apt-utils
+      - iputils-ping
+      - telnet
+      - wget
+      - curl
+      - tmux
+      # - yq # https://mikefarah.gitbook.io/yq/v/v3.x/
+      - logrotate
+      - htop
+      - snapd
+      - rsync
+      - unzip
+      - zsh
+      - 7zip
+      - zip
+      - jq
+      - tree
+      - nano
+      - vim
+      - nala # https://gitlab.com/volian/nala
+      #- homebrew #https://docs.brew.sh/Homebrew-on-Linux

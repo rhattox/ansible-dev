@@ -1,0 +1,11 @@
+- name: Install Packages
+  ansible.builtin.apt:
+    name:
+      - selinux-basics
+      - apparmor-utils
+      - selinux-utils
+      - selinux-basics
+      - rkhunter
+      - fail2ban
+      - firewalld
+      - sudo
