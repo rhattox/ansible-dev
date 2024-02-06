@@ -5,3 +5,5 @@
 
   roles:
     - dev
+    - etc
+    - network

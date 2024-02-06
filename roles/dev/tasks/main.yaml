@@ -1,11 +1,11 @@
 - name: Install Packages
   ansible.builtin.apt:
     name:
-      - build-essential      
+      - build-essential
       - pip
       - gradle
       - golang
-      - golang-go    
+      - golang-go
       - ruby-full
       - git
       - npm
