@@ -16,6 +16,8 @@
       - wget
       - curl
       - tmux
+      - gnome
+      - xrdp
       # - yq # https://mikefarah.gitbook.io/yq/v/v3.x/
       - logrotate
       - htop
@@ -31,3 +33,12 @@
       - vim
       - nala # https://gitlab.com/volian/nala
       #- homebrew #https://docs.brew.sh/Homebrew-on-Linux
+
+- name: "Get current systemd default"
+  command: "systemctl get-default"
+  changed_when: false
+  register: systemdefault
+
+- name: "Set default to graphical target"
+  command: "systemctl set-default graphical.target"
+  when: "'graphical' not in systemdefault.stdout"
