@@ -4,6 +4,7 @@
   gather_facts: true
 
   roles:
-    - dev
-    - etc
-    - network
+    # - dev
+    # - etc
+    # - network
+    - nvim
