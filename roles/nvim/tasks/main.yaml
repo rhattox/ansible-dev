@@ -50,3 +50,7 @@
     dest: "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
     version: "v2.0"  
 
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/dev/.bashrc
+# sudo apt-get install build-essential procps curl file git
+# sudo apt-get install build-essential
