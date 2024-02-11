@@ -1,56 +1,52 @@
-- name: Download and Extract
-  block:
-    - name: Download NVIM tar file
-      ansible.builtin.get_url:
-        url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
-        dest: "/tmp/nvim.tar.gz"
-        mode: "0755"
+- name: Download NVIM tar file
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+    dest: "/tmp/nvim.tar.gz"
+    mode: "0755"
 
-    - name: Create tmp NVIM directory
-      ansible.builtin.file:
-        path: "/tmp/nvim"
-        state: directory
-        owner: "root"
-        group: "root"
-        mode: "0755"
+- name: Create tmp NVIM directory
+  ansible.builtin.file:
+    path: "/tmp/nvim"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: "0755"
 
-    - name: Extract Nexus archive to temporary path
-      ansible.builtin.unarchive:
-        src: "/tmp/nvim.tar.gz"
-        dest: "/tmp/nvim/"
-        remote_src: true
+- name: Extract Nexus archive to temporary path
+  ansible.builtin.unarchive:
+    src: "/tmp/nvim.tar.gz"
+    dest: "/tmp/nvim/"
+    remote_src: true
 
-    - name: Create NVIM directory
-      ansible.builtin.file:
-        path: "/opt/nvim"
-        state: directory
-        owner: "root"
-        group: "root"
-        mode: "0755"
+- name: Create NVIM directory
+  ansible.builtin.file:
+    path: "/opt/nvim"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: "0755"
 
-    - name: Install Nvim To Correct Folder
-      ansible.builtin.copy:
-        src: "/tmp/nvim/nvim-linux64/"
-        dest: "/opt/nvim/"
-        remote_src: true
-        mode: "0755"
-        group: root
-        owner: root
+- name: Install Nvim To Correct Folder
+  ansible.builtin.copy:
+    src: "/tmp/nvim/nvim-linux64/"
+    dest: "/opt/nvim/"
+    remote_src: true
+    mode: "0755"
+    group: root
+    owner: root
 
-    - name: Creates Symlink
-      ansible.builtin.file:
-        src: "/opt/nvim/bin/nvim"
-        dest: "/usr/bin/nvim"
-        mode: "0777"
-        owner: root
-        group: root
-        state: link
+- name: Creates Symlink
+  ansible.builtin.file:
+    src: "/opt/nvim/bin/nvim"
+    dest: "/usr/bin/nvim"
+    mode: "0777"
+    owner: root
+    group: root
+    state: link
 
-    - name: Clone repository with specific tag
-      ansible.builtin.git:
-        repo: "https://github.com/NvChad/NvChad.git"
-        dest: "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
-        version: "v2.0"  
-        owner: {{ ansible_env.SUDO_USER }}
-        group: {{ ansible_env.SUDO_USER }}
-        mode: "0755"
+- name: Clone repository with specific tag
+  ansible.builtin.git:
+    repo: "https://github.com/NvChad/NvChad.git"
+    dest: "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
+    version: "v2.0"  
+

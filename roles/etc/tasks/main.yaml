@@ -16,7 +16,6 @@
       - wget
       - curl
       - tmux
-      - hddtemp 
       - lm-sensors
       - gnome
       - xrdp
@@ -33,7 +32,6 @@
       - tree
       - nano
       - vim
-      - neovim
       - fonts-firacode
       - nala # https://gitlab.com/volian/nala
       #- homebrew #https://docs.brew.sh/Homebrew-on-Linux
