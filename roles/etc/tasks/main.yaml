@@ -16,6 +16,8 @@
       - wget
       - curl
       - tmux
+      - hddtemp 
+      - lm-sensors
       - gnome
       - xrdp
       # - yq # https://mikefarah.gitbook.io/yq/v/v3.x/
