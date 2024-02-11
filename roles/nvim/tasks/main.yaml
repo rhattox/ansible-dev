@@ -54,3 +54,4 @@
 # echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/dev/.bashrc
 # sudo apt-get install build-essential procps curl file git
 # sudo apt-get install build-essential
+# brew install ripgrep
