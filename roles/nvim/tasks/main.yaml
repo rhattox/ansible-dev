@@ -55,3 +55,4 @@
 # sudo apt-get install build-essential procps curl file git
 # sudo apt-get install build-essential
 # brew install ripgrep
+#  apt install python3.10-venv
