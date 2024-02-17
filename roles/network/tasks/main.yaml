@@ -8,4 +8,8 @@
       - openssh-server
       - network-manager
       - nload
+      - telnet
       - ntp
+      - tmux
+      - iputils-ping
+

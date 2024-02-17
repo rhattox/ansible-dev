@@ -35,6 +35,16 @@
     group: root
     owner: root
 
+- name: Clean Up NVIM
+  ansible.builtin.file:
+    state: absent
+    path: /tmp/nvim/
+
+- name: Clean Up NVIM
+  ansible.builtin.file:
+    state: absent
+    path: /tmp/nvim.tar.gz
+
 - name: Creates Symlink
   ansible.builtin.file:
     src: "/opt/nvim/bin/nvim"
@@ -46,10 +56,10 @@
 
 - name: Clone repository with specific tag
   ansible.builtin.git:
-    repo: "https://github.com/NvChad/NvChad.git"
+    repo: "https://github.com/rhattox/nvim-configs.git"
     dest: "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
-    version: "v2.0"  
-
+    refspec: "main"  
+    force: true
 #/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/dev/.bashrc
 # sudo apt-get install build-essential procps curl file git
