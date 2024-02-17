@@ -76,6 +76,7 @@
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     refspec: "master"  
+    dest: "/home/{{ ansible_env.SUDO_USER }}/.tmux/plugins/tpm"
     force: true
 
 - name: Download HomeBrew
