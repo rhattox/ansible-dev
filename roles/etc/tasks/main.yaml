@@ -12,7 +12,7 @@
       - apt-utils
       - lm-sensors
       - xrdp
-      # - yq # https://mikefarah.gitbook.io/yq/v/v3.x/
+      - fzf
       - logrotate
       - htop
       - snapd
@@ -27,5 +27,4 @@
       - vim
       - fonts-firacode
       - nala # https://gitlab.com/volian/nala
-      #- homebrew #https://docs.brew.sh/Homebrew-on-Linux
 

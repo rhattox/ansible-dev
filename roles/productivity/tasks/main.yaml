@@ -12,7 +12,7 @@
     group: "root"
     mode: "0755"
 
-- name: Extract Nexus archive to temporary path
+- name: Extract NVIM archive to temporary path
   ansible.builtin.unarchive:
     src: "/tmp/nvim.tar.gz"
     dest: "/tmp/nvim/"
@@ -54,15 +54,52 @@
     group: root
     state: link
 
-- name: Clone repository with specific tag
+- name: Clone NVIM repository with specific tag
   ansible.builtin.git:
     repo: "https://github.com/rhattox/nvim-configs.git"
     dest: "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
     refspec: "main"  
     force: true
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/dev/.bashrc
-# sudo apt-get install build-essential procps curl file git
-# sudo apt-get install build-essential
-# brew install ripgrep
-#  apt install python3.10-venv
+
+- name: Install Tmux and ZSH
+  ansible.builtin.apt:
+    name:
+      - tmux
+
+- name: Download NVIM tar file
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/rhattox/tmux-configs/main/.tmux.conf"
+    dest: "/home/{{ ansible_env.SUDO_USER }}/.tmux.conf"
+    mode: "0755"
+
+- name: Clone TPM Repository  
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm.git"
+    refspec: "master"  
+    force: true
+
+- name: Download HomeBrew
+  ansible.builtin.git:
+    repo: "https://github.com/Homebrew/install.git"
+    dest: "/tmp/homebrew"
+    refspec: "master"  
+    force: true
+
+- name: Install HomeBrew
+  become: false
+  register: install_homebrew
+  changed_when: install_homebrew.rc != 0
+  ansible.builtin.shell: |
+   NONINTERACTIVE=1 /bin/bash -c /tmp/homebrew/install.sh
+  args:
+    executable: /bin/bash
+
+- name: Install YQ and Ripgrep
+  become: false
+  register: install_homebrew
+  changed_when: install_homebrew.rc != 0
+  ansible.builtin.shell: |
+   brew install yq ripgrep
+  args:
+    executable: /bin/bash
+

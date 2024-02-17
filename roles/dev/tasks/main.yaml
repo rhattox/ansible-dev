@@ -9,6 +9,7 @@
       # Python
       #
       - pip
+      - python3.10-venv
       # 
       # Java
       #
