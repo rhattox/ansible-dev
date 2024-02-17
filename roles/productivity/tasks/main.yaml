@@ -61,6 +61,15 @@
     refspec: "main"  
     force: true
 
+- name: Setup Permissions
+  ansible.builtin.file:
+    path:  "/home/{{ ansible_env.SUDO_USER }}/.config/nvim"
+    state: directory
+    recurse: yes
+    owner: "{{ ansible_env.SUDO_USER }}"
+    group: "{{ ansible_env.SUDO_USER }}"
+    mode: "0755"
+
 - name: Install Tmux and ZSH
   ansible.builtin.apt:
     name:
@@ -72,12 +81,29 @@
     dest: "/home/{{ ansible_env.SUDO_USER }}/.tmux.conf"
     mode: "0755"
 
+- name: Setup Permissions
+  ansible.builtin.file:
+    path:  "/home/{{ ansible_env.SUDO_USER }}/.tmux.conf"
+    state: file
+    owner: "{{ ansible_env.SUDO_USER }}"
+    group: "{{ ansible_env.SUDO_USER }}"
+    mode: "0755"
+
 - name: Clone TPM Repository  
   ansible.builtin.git:
     repo: "https://github.com/tmux-plugins/tpm.git"
     refspec: "master"  
     dest: "/home/{{ ansible_env.SUDO_USER }}/.tmux/plugins/tpm"
     force: true
+
+- name: Setup Permissions
+  ansible.builtin.file:
+    path:  "/home/{{ ansible_env.SUDO_USER }}/.tmux/plugins/tpm"
+    state: directory
+    recurse: yes
+    owner: "{{ ansible_env.SUDO_USER }}"
+    group: "{{ ansible_env.SUDO_USER }}"
+    mode: "0755"
 
 - name: Download HomeBrew
   ansible.builtin.git:
