@@ -27,4 +27,5 @@
       - vim
       - fonts-firacode
       - nala # https://gitlab.com/volian/nala
+      - screenkey
 
